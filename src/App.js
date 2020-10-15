@@ -16,15 +16,25 @@ class AddAnyNumber extends Component {
     text: '', // ini dari redux
   };
 
+  inputRef = React.createRef();
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addAnyNumber(Number(this.state.text));
   };
 
+  makeFocus = () => {
+    const ref = this.inputRef.current;
+    ref.focus()
+    ref.value = 'yuhuu'
+    console.log('ref', ref)
+  }
+
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form noValidate onSubmit={this.handleSubmit}>
         <input
+          ref={this.inputRef}
           type="text"
           placeholder="Add number .. "
           value={this.state.text}
@@ -33,8 +43,10 @@ class AddAnyNumber extends Component {
               text: e.target.value,
             })
           }
+          required
         />
         <button>Add Any</button>
+        <button onClick={this.makeFocus}>Make Focus</button>
       </form>
     );
   }
@@ -44,6 +56,7 @@ class App extends Component {
   state = {
     users: [],
   };
+  
   componentDidMount() {
     this.props.fetchPosts();
   }
