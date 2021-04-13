@@ -3,6 +3,8 @@ import { FETCH_POSTS, SET_LOADING } from "../actions/actionTypes";
 const initialState = {
   posts: [],
   loading: false,
+  submited: false,
+  error: "Email already exist",
 };
 
 export default function postReducer(state = initialState, action) {

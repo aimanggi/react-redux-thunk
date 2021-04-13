@@ -10,8 +10,7 @@ export const fetchPosts = () => {
     axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
       dispatch({
         type: FETCH_POSTS,
-        posts: response.data,
-        status: 'Done'
+        payload: response.data,
       });
 
       dispatch({
